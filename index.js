@@ -13,13 +13,13 @@ module.exports = function Table(tableInstance, promiseDbSync){
   };
 
 
-  this.bulkCreate = function(params){
+  this.bulkCreate = function(params, chunkSize){
     return new Promise((resolve, reject) => {
       return promiseDbSync.then(
         function _tableBulkCreate(){
           if(params && params.length > 0){
             // bulk insert new records
-            const to_insert_chunks = _.chunk(params, 1000);
+            const to_insert_chunks = _.chunk(params, chunkSize || 200);
 
             return Promise.all(
                 to_insert_chunks.map((cur_chunk) => {
@@ -28,7 +28,6 @@ module.exports = function Table(tableInstance, promiseDbSync){
               ).then(resolve, reject)
           } else {
             // no data...
-            console.error('no data', params);
             return reject(params);
           }
         }
