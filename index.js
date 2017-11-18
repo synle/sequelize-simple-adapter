@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 module.exports = function Table(tableInstance, promiseDbSync){
   this.create = function(params){
     return promiseDbSync.then(
