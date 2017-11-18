@@ -28,7 +28,8 @@ module.exports = function Table(tableInstance, promiseDbSync){
               ).then(resolve, reject)
           } else {
             // no data...
-            return rejectreject(params);
+            console.error('no data', params);
+            return reject(params);
           }
         }
       );
