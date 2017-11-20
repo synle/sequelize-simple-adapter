@@ -4,13 +4,24 @@
 npm install --save git+https://github.com/synle/sequelize-simple-adapter.git
 ```
 
+## Envs
+```
+export MAIN_DB_HOST='YOUR_MAIN_DB_HOST'
+export MAIN_DB_NAME='YOUR_MAIN_DB_NAME'
+export MAIN_DB_USER='YOUR_MAIN_DB_USER'
+export MAIN_DB_PASSWORD='YOUR_MAIN_DB_PASSWORD'
+```
 
-How to use
+
+## How to use
+### Include it
 ```
 const Table = require('sequelize-simple-adapter');
 ```
 
 
+
+### Create DB Adapter
 ```
 // if there is a db connection, then use it...
 const sequelize = !!process.env.MAIN_DB_HOST
@@ -44,6 +55,9 @@ const sequelize = !!process.env.MAIN_DB_HOST
 ```    
 
 
+
+
+### Sync it
 ```
 // might only need to run for init call...
 const promiseSequelizeInit = sequelize.sync().then(function (argument) {
@@ -53,6 +67,9 @@ const promiseSequelizeInit = sequelize.sync().then(function (argument) {
 ```
 
 
+
+
+### DB Schema
 ```
 const User = sequelize.define('parking_users', {
     id               : { type: Sequelize.DataTypes.UUID, defaultValue: Sequelize.DataTypes.UUIDV1, primaryKey: true },
@@ -68,6 +85,8 @@ const User = sequelize.define('parking_users', {
 
 
 
+
+### Export
 ```
 User        : new Table(User, promiseSequelizeInit),
 ```
