@@ -2,6 +2,9 @@
 
 ```
 npm install --save git+https://github.com/synle/sequelize-simple-adapter.git
+
+From npm.js
+npm install --save sequelize-simple-adapter@1.0.0
 ```
 
 ## Envs
@@ -52,7 +55,7 @@ const sequelize = !!process.env.MAIN_DB_HOST
             logging: false
         }
     );
-```    
+```
 
 
 
